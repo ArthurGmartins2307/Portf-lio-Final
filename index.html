@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio Profissional - Jogo de Tabuleiro</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" type="image/png" href="img/icon.png">
+
+</head>
+<body>
+    <header class="main-header">
+        <div class="profile-container">
+            <img src="./img/eu.jpg" alt="Foto de Perfil" class="profile-pic">
+            <h1 class="profile-title">Arthur Galvão</h1>
+            <p class="profile-subtitle">Desenvolvedor Front-end</p>
+            <button class="theme-toggle" id="themeToggle">
+                <i class="fas fa-moon"></i>
+                <span>Modo Escuro</span>
+            </button>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="game-container">
+            <div class="game-board">
+                <svg class="path" viewBox="0 0 1000 1000" preserveAspectRatio="none">
+                    <defs>
+                        <linearGradient id="path-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#8B0000" />
+                            <stop offset="100%" stop-color="#5A0000" />
+                        </linearGradient>
+                    </defs>
+                    <path class="path-line" d="M50,50 
+                                            H300 
+                                            V150 
+                                            H500 
+                                            V250 
+                                            H700 
+                                            V350 
+                                            H900 
+                                            V550 
+                                            H700 
+                                            V650 
+                                            H500 
+                                            V750 
+                                            H300 
+                                            V950 
+                                            H50 
+                                            V750 
+                                            H300 
+                                            V650 
+                                            H50 
+                                            V550 
+                                            H300 
+                                            V450 
+                                            H50 
+                                            V350 
+                                            H300 
+                                            V250 
+                                            H50 
+                                            V50" />
+                </svg>
+
+                <div class="player-piece" id="playerPiece">
+                    <i class="fas fa-user"></i>
+                </div>
+
+                <div class="project-tile" style="top: 5%; left: 5%;" data-project="1">
+                    <div class="tile-number">1</div>
+                    <i class="fab fa-linkedin"></i>
+                </div>
+
+                <div class="project-tile" style="top: 5%; left: 30%;" data-project="2">
+                    <div class="tile-number">2</div>
+                    <i class="fas fa-desktop"></i>
+                </div>
+
+                <div class="project-tile" style="top: 5%; left: 55%;" data-project="3">
+                    <div class="tile-number">3</div>
+                    <i class="fab fa-linux"></i>
+                </div>
+
+                <div class="project-tile" style="top: 5%; left: 80%;" data-project="4">
+                    <div class="tile-number">4</div>
+                    <i class="fas fa-project-diagram"></i>
+                </div>
+
+                <div class="project-tile" style="top: 20%; left: 80%;" data-project="5">
+                    <div class="tile-number">5</div>
+                    <i class="fas fa-font"></i>
+                </div>
+
+                <div class="project-tile" style="top: 35%; left: 80%;" data-project="6">
+                    <div class="tile-number">6</div>
+                    <i class="fas fa-palette"></i>
+                </div>
+
+                <div class="project-tile" style="top: 50%; left: 80%;" data-project="7">
+                    <div class="tile-number">7</div>
+                    <i class="fa-brands fa-figma"></i>
+                </div>
+
+                <div class="project-tile" style="top: 65%; left: 80%;" data-project="8">
+                    <div class="tile-number">8</div>
+                    <i class="fab fa-html5"></i>
+                </div>
+
+                <div class="project-tile" style="top: 80%; left: 80%;" data-project="9">
+                    <div class="tile-number">9</div>
+                    <i class="fas fa-boxes"></i>
+                </div>
+
+                <div class="project-tile" style="top: 80%; left: 55%;" data-project="10">
+                    <div class="tile-number">10</div>
+                    <i class="fas fa-th"></i>
+                </div>
+
+                <div class="project-tile" style="top: 80%; left: 30%;" data-project="11">
+                    <div class="tile-number">11</div>
+                    <i class="fas fa-utensils"></i>
+                </div>
+
+                <div class="project-tile" style="top: 80%; left: 5%;" data-project="12">
+                    <div class="tile-number">12</div>
+                    <i class="fas fa-film"></i>
+                </div>
+
+                <div class="project-tile" style="top: 65%; left: 5%;" data-project="13">
+                    <div class="tile-number">13</div>
+                    <i class="fas fa-shapes"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modais para cada projeto -->
+        <div class="modal" id="projectModal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h2 id="modalTitle">Título do Projeto</h2>
+                <div id="modalContent">
+                    
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="https://www.linkedin.com/in/arthur-galvão-martins-bbb79534a/" class="footer-link"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                <a href="https://github.com/ArthurGmartins2307" class="footer-link"><i class="fab fa-github"></i> GitHub</a>
+            </div>
+            <p class="copyright">© <span id="currentYear"></span> Portfólio de tabuleiro - Arthur Galvão Martins - Todos os direitos reservados</p>
+        </div>
+    </footer>
+
+    <script>
+        const projects = {
+            1: {
+                title: "Como criar um perfil no LinkedIn",
+                content: `<p>Guia completo sobre criação e otimização de perfil profissional no LinkedIn.</p>`,
+                links: [{ text: "Ver Perfil", url: "https://www.linkedin.com/in/arthur-galvão-martins-bbb79534a/" }]
+            },
+            2: {
+                title: "Componentes do computador",
+                content: `<p>Componentes do computador são as partes essenciais que formam um sistema computacional. Entre os principais estão:
+
+Processador (CPU): cérebro do computador, responsável por executar instruções.
+
+Memória RAM: armazena dados temporários para acesso rápido.
+
+Armazenamento (HD/SSD): guarda dados e programas de forma permanente.
+
+Placa-mãe: conecta e integra todos os componentes.
+
+Placa de vídeo (GPU): processa gráficos e imagens.
+
+Fonte de alimentação: fornece energia elétrica adequada para os componentes.
+
+Periféricos: dispositivos externos como teclado, mouse e monitor.
+
+Cada componente tem uma função específica que, em conjunto, permite o funcionamento do computador.</p>`,
+                
+            },
+            3: {
+                title: "Fundamentos da Linux/sistemas operacionais/hardware",
+                content: `<p>Fundamentos do Linux
+Linux é um sistema operacional de código aberto, baseado em Unix, conhecido pela segurança e estabilidade. Utiliza o terminal para comandos e organiza arquivos em uma estrutura hierárquica.
+
+Fundamentos de Sistemas Operacionais
+O sistema operacional gerencia o hardware e os softwares, controlando processos, memória e arquivos. Pode ter interface gráfica ou de linha de comando. Exemplos: Windows, macOS e Linux.
+
+Fundamentos de Hardware
+Hardware é a parte física do computador, incluindo CPU, memória RAM, armazenamento, placas e periféricos. É a base que permite o funcionamento do sistema operacional e dos programas.</p>`,
+            },
+            4: {
+                title: "Integrando o scrum e o kanban",
+                content: `<p>Análise das metodologias ágeis Scrum e Kanban e sua aplicação prática.</p>`,
+                links: [{ text: "Ver Projeto", url: "https://drive.google.com/file/d/1rEOg9EPD2K1NSMXrnLhQVoUSFmRJvL_6/view" }]
+            },
+            5: {
+                title: "Arquétipos na Tipografia",
+                content: `<p>Estudo sobre arquétipos na tipografia e impacto na percepção do usuário.</p>`,
+                links: [{ text: "Ver Projeto", url: "https://app.luminpdf.com/pt/viewer/683e59b071c47fdcc79b6a2b?credentials-id=f0354468-e216-4460-9dee-f3a751d56ef9&authStatus=sign_up&can-join-paid-circle=false" }]
+            },
+            6: {
+                title: "Cores & Gestalt",
+                content: `<p>Teoria das cores combinada com os princípios da psicologia da Gestalt.</p>`,
+                links: [{ text: "Ver Projeto", url: "https://app.luminpdf.com/pt/viewer/683e5ab471c47fdcc79baa9c?credentials-id=c0ce542a-1a63-42f9-b3b1-548077cb97de&can-join-paid-circle=false&from=classroom" }]
+            },
+            7: {
+                title: "Projetos no Figma",
+                content: `<p>Desenvolvimento de protótipo interativo usando o figma.</p>`,
+                links: [{ text: "Ver Projeto", url: "https://www.figma.com/design/9zWQXhTS3GgiOzjLgYRzIQ/Prot%C3%B3tipo-do-portf%C3%B3lio?m=auto&t=uqTYlvcv2N6bocz6-1" }] 
+            },
+            8: {
+                title: "Primeira página HTML e CSS",
+                content: `<p>Meu primeiro projeto desenvolvendo uma página web completa.</p>`,
+                links: [{ text: "Ver Projeto", url: "https://arthurgmartins2307.github.io/16.04.25/" }]
+            },
+            9: {
+                title: "Flex Box CSS",
+                content: `<p>Domínio do módulo Flexbox do CSS para criação de layouts responsivos.</p>`,
+                links: [{ text: "Ver Projeto", url: "https://arthurgmartins2307.github.io/Site-07.05.25/" }]
+            },
+            10: {
+                title: "Grids no CSS",
+                content: `<p>Implementação de layouts complexos utilizando CSS Grid Layout.</p>`,
+                links: [{ text: "Ver Projeto", url: "https://arthurgmartins2307.github.io/Exercicio14-grid/" }]
+            },
+            11: {
+                title: "Site de restaurante",
+                content: `<p>Website completo para um restaurante utilizando #ID e inputs.</p>`,
+                links: [{ text: "Ver Projeto", url: "https://arthurgmartins2307.github.io/Sabores-da-terra/" }]
+            },
+            12: {
+                title: "Keyframes no CSS",
+                content: `<p>Criação de animações complexas utilizando keyframes e transições CSS.</p>`,
+                links: [{ text: "Ver Projeto", url: "https://arthurgmartins2307.github.io/Sistema_solar/" }]
+            },
+            13: {
+                title: "Formas geométricas com CSS",
+                content: `<p>Criação de formas geométricas utilizando apenas CSS.</p>`,
+                links: [{ text: "Ver Projeto", url: "https://arthurgmartins2307.github.io/Formas-com-CSS/" }]
+            }
+        };
+
+        // Elementos do DOM
+        const themeToggle = document.getElementById('themeToggle');
+        const playerPiece = document.getElementById('playerPiece');
+        const projectModal = document.getElementById('projectModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalContent = document.getElementById('modalContent');
+        const closeModal = document.querySelector('.close-modal');
+        const currentYear = document.getElementById('currentYear');
+
+        // Configuração inicial
+        document.addEventListener('DOMContentLoaded', function() {
+            // Definir ano atual no footer
+            currentYear.textContent = new Date().getFullYear();
+
+            // Adicionar eventos aos tiles
+            document.querySelectorAll('.project-tile').forEach(tile => {
+                tile.addEventListener('click', function() {
+                    const projectId = this.getAttribute('data-project');
+                    openProjectModal(projectId);
+                    movePlayerToTile(this);
+                });
+            });
+
+            // Fechar modal
+            closeModal.addEventListener('click', function() {
+                projectModal.style.display = 'none';
+            });
+
+            window.addEventListener('click', function(event) {
+                if (event.target === projectModal) {
+                    projectModal.style.display = 'none';
+                }
+            });
+
+            // Alternar tema
+            themeToggle.addEventListener('click', toggleTheme);
+        });
+
+        // Função para abrir o modal do projeto
+        function openProjectModal(projectId) {
+            const project = projects[projectId];
+            modalTitle.textContent = project.title;
+            
+            let linksHTML = '';
+            if (project.links && project.links.length > 0) {
+                linksHTML = '<div class="project-links">';
+                project.links.forEach(link => {
+                    linksHTML += `<a href="${link.url}" class="project-link" target="_blank">${link.text}</a>`;
+                });
+                linksHTML += '</div>';
+            }
+            
+            modalContent.innerHTML = project.content + linksHTML;
+            projectModal.style.display = 'flex';
+        }
+
+        // Função para mover a peça do jogador
+        function movePlayerToTile(tile) {
+            const tileRect = tile.getBoundingClientRect();
+            const boardRect = document.querySelector('.game-board').getBoundingClientRect();
+            
+            const x = tileRect.left - boardRect.left + (tileRect.width / 2) - 15;
+            const y = tileRect.top - boardRect.top + (tileRect.height / 2) - 15;
+            
+            playerPiece.style.left = `${x}px`;
+            playerPiece.style.top = `${y}px`;
+            
+            // Adicionar número do projeto à peça
+            const projectNumber = tile.getAttribute('data-project');
+            playerPiece.innerHTML = `<span>${projectNumber}</span>`;
+        }
+
+        // Função para alternar entre temas claro e escuro
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+            
+            if (document.body.classList.contains('dark-mode')) {
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i><span>Modo Claro</span>';
+            } else {
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i><span>Modo Escuro</span>';
+            }
+        }
+    </script>
+</body>
+</html>
